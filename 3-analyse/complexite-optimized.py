@@ -44,16 +44,15 @@ def analyse(first_result):
     first_result_sum_price = sum(first_result_df['price'].to_list())
     first_result_benefice = sum(first_result_df['benefice'].to_list())
 
-    actions = first_result_df['name'].to_list()
+    '''actions = first_result_df['name'].to_list()'''
 
-    print('====== Data base ======')
+    print('============== Data base ===============')
     print(first_result_df)
-    print('=======================\n')
-    print('Liste des actions à acheter :\n')
-    print(actions)
-    print('=======================\n')
-    print("Montant total d'actions achetées : " + str(first_result_sum_price))
-    print("Bénéfices : " + str(first_result_benefice))
+    print('========================================')
+    print(Fore.MAGENTA + "Total d'actions achetées : " + str(round(first_result_sum_price, 2)) + '€')
+    # impression la somme des prix des actions achetées.
+    print("Total des Bénéfices Net  : " + str(round(first_result_benefice, 2)) + '€' + Style.RESET_ALL)
+    # impression de la somme des bénéfices des actions achetées.
 
 
 def main():
@@ -70,22 +69,23 @@ def main():
         analyse(first_result)
 
         end_time = time.time()  # Marquer le temps de fin
-        execution_time = (end_time - start_time)*1000  # Calculer le temps d'exécution
+        execution_time = round(end_time - start_time, 3)  # Calculer le temps d'exécution
 
-        print(f"{Fore.BLUE}\n=== Fin de l'analyse pour le fichier {my_data} ==={Style.RESET_ALL}\n")
-        print(f"{Fore.RED}Temps d'exécution : {execution_time} millisecondes{Style.RESET_ALL}\n")
-        # Afficher le temps d'exécution en millisecondes
+        print(f"{Fore.RED}Temps d'exécution        : {execution_time} secondes{Style.RESET_ALL}\n")
+        # Afficher le temps d'exécution en secondes
+
+        print(f"{Fore.BLUE}\nFin de l'analyse du fichier {my_data} {Style.RESET_ALL}\n")
 
         sizes.append(len(df_sorted))
         times.append(execution_time)
 
     # Tracer le temps d'exécution en fonction de la taille de l'ensemble de données
-    plt.plot(sizes, times, 'o-')  
+    plt.plot(sizes, times, 'o-')
     plt.xlabel('Taille de l\'ensemble de données')
-    plt.ylabel('Temps d\'exécution (ms)')
+    plt.ylabel('Temps d\'exécution (s)')
     plt.title('Analyse empirique de la complexité du temps d\'exécution')
     plt.grid(True)
-    plt.savefig('output.png')  # Sauvegarder la figure dans un fichier .png
+    plt.savefig('output-optimised.png')  # Sauvegarder la figure dans un fichier .png
 
 
 if __name__ == '__main__':
