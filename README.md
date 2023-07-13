@@ -1,5 +1,5 @@
-# Projet 6 OpenClassRoom : Développez une interface utilisateur pour une application web Python
-![](/frontend/img/juststreamit-1.png)
+# Projet 7 OpenClassRoom : Résolvez des problèmes en utilisant des algorithmes en Python
+![](https://raw.githubusercontent.com/waleedos/2023_P7_Python_Algorithmes_Finance/main/Mission/logo.png)
 
 ## Compétences évaluées :
 - Interagir avec une API REST.
